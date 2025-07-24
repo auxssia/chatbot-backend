@@ -33,6 +33,7 @@ def chat():
             return jsonify({"reply": shortcuts[keyword]})
 
     try:
+        client = openai.OpenAI()  # create the client once (at top of file is better)
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
