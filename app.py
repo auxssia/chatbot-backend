@@ -19,6 +19,10 @@ shortcuts = {
     "whatsapp": "Please message us at +91-90000-00000."
 }
 
+@app.route("/")  # ✅ Add this block
+def home():
+    return "✅ Chatbot backend is live!"
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
@@ -30,7 +34,7 @@ def chat():
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4-turbo",
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a friendly assistant for a small local business."},
                 {"role": "user", "content": message}
