@@ -1,15 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import openai
 import os
 from dotenv import load_dotenv
+from openai import OpenAI
 
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 shortcuts = {
     "price": "Our basic plan starts at ₹299/month.",
@@ -19,7 +19,7 @@ shortcuts = {
     "whatsapp": "Please message us at +91-90000-00000."
 }
 
-@app.route("/")  # ✅ Add this block
+@app.route("/")  # ✅ Health check
 def home():
     return "✅ Chatbot backend is live!"
 
@@ -33,7 +33,7 @@ def chat():
             return jsonify({"reply": shortcuts[keyword]})
 
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a friendly assistant for a small local business."},
@@ -42,7 +42,7 @@ def chat():
             max_tokens=200,
             temperature=0.7
         )
-        reply = response['choices'][0]['message']['content'].strip()
+        reply = response.choices[0].message.content.strip()
         return jsonify({"reply": reply})
     
     except Exception as e:
