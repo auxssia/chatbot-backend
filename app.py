@@ -16,8 +16,8 @@ shortcuts = {
     "timing": "We're open from 10 AM to 8 PM every day.",
     "location": "We’re located near Gachibowli, Hyderabad.",
     "services": "We offer grooming, styling, and facial treatments.",
-    "whatsapp": "Please message us at +91-90000-00000."
-    "Ritesh": "Our best employee"
+    "whatsapp": "Please message us at +91-90000-00000.",
+    "Ritesh": "our best employee"
 }
 
 @app.route("/")  # ✅ Health check
@@ -35,8 +35,7 @@ def chat():
 
     try:
         client = openai.OpenAI()  # create the client once (at top of file is better)
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+        response = client.chat.completions.create(model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a friendly assistant for a small local business."},
                 {"role": "user", "content": message}
