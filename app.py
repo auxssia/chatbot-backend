@@ -21,7 +21,7 @@ shortcuts = {
     "services": "We offer grooming, styling, and facial treatments.",
     "whatsapp": "Please message us at +91-90000-00000.",
     "ritesh": "Ritesh is our best employee!",
-    "navin": "Navis is our CEO"
+    "navin": "Navin is our CEO"
 }
 
 # Health check route
