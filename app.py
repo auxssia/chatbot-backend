@@ -20,7 +20,8 @@ shortcuts = {
     "location": "We’re located near Gachibowli, Hyderabad.",
     "services": "We offer grooming, styling, and facial treatments.",
     "whatsapp": "Please message us at +91-90000-00000.",
-    "ritesh": "Ritesh is our best employee!"
+    "ritesh": "Ritesh is our best employee!",
+    "navin": "Navis is our CEO"
 }
 
 # Health check route
