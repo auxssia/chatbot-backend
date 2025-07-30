@@ -4,38 +4,45 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
+# Initialize OpenAI client once at the top
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+# Keyword-based quick replies
 shortcuts = {
     "price": "Our basic plan starts at ₹299/month.",
     "timing": "We're open from 10 AM to 8 PM every day.",
     "location": "We’re located near Gachibowli, Hyderabad.",
     "services": "We offer grooming, styling, and facial treatments.",
     "whatsapp": "Please message us at +91-90000-00000.",
-    "Ritesh": "our best employee"
+    "ritesh": "Ritesh is our best employee!"
 }
 
-@app.route("/")  # ✅ Health check
+# Health check route
+@app.route("/")
 def home():
     return "✅ Chatbot backend is live!"
 
+# Main chat route
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.json
     message = data.get('message', '').lower()
 
+    # Check for shortcut replies
     for keyword in shortcuts:
         if keyword in message:
             return jsonify({"reply": shortcuts[keyword]})
 
+    # Fallback to GPT if no shortcut matched
     try:
-        client = openai.OpenAI()  # create the client once (at top of file is better)
-        response = client.chat.completions.create(model="gpt-3.5-turbo",
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a friendly assistant for a small local business."},
                 {"role": "user", "content": message}
@@ -45,7 +52,7 @@ def chat():
         )
         reply = response.choices[0].message.content.strip()
         return jsonify({"reply": reply})
-    
+
     except Exception as e:
         print("Error:", e)
         return jsonify({"reply": "Sorry, I’m having trouble right now. Please try again later."}), 500
