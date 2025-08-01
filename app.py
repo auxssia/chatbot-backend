@@ -23,13 +23,15 @@ shortcuts = {
     "ritesh": "Ritesh is our best employee!",
     "navin": "Navin is our CEO",
     "pallavi": "Pallavi is the best psychotherapist in Vijayawada.",
-    "vaishu": "Vaishu is a monkey"
+    "vaishu": "Vaishu is a monkey",
+    "ramana": "Ramana is a  professional stock trader in Vijayawada"
 }
 
 # Health check route
 @app.route("/")
 def home():
     return "✅ Chatbot backend is live!"
+    
 
 # Main chat route
 @app.route('/chat', methods=['POST'])
