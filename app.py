@@ -22,7 +22,8 @@ shortcuts = {
     "whatsapp": "Please message us at +91-90000-00000.",
     "ritesh": "Ritesh is our best employee!",
     "navin": "Navin is our CEO",
-    "pallavi": "Pallavi is the best psychotherapist in Vijayawada."
+    "pallavi": "Pallavi is the best psychotherapist in Vijayawada.",
+    "vaishu": "Vaishu is a monkey"
 }
 
 # Health check route
