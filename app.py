@@ -21,10 +21,7 @@ shortcuts = {
     "services": "We offer grooming, styling, and facial treatments.",
     "whatsapp": "Please message us at +91-90000-00000.",
     "ritesh": "Ritesh is our best employee!",
-    "navin": "Navin is our CEO",
-    "pallavi": "Pallavi is the best psychotherapist in Vijayawada.",
-    "vaishu": "Vaishu is a monkey",
-    "ramana": "Ramana is a professional stock trader in Vijayawada"
+    "navin": "Navin is our CEO"
 }
 
 # Serve chatbot UI
